@@ -1,18 +1,25 @@
 const {  BrowserWindow } = require('electron')
+const controllerChamado  = require('./controller/controller.chamado');
+require('@electron/remote/main').initialize();
 
-
-const manWindow = () => {
+const mainWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences:{
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true
     }
   })
+  require('@electron/remote/main').enable(win.webContents)
   win.loadFile('src/ui/index.html')
 }
 
+
+
 module.exports = {
-  manWindow
+  mainWindow,
+  controllerChamado
 }
 
