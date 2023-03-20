@@ -25,6 +25,10 @@ const Chamados = sequelize.define('chamados',{
   },
   pedido_chamado:{
     type: Sequelize.TEXT
+  },
+  status:{
+    type:Sequelize.INTEGER,
+    allowNull: false
   }
 
 });

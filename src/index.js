@@ -1,4 +1,4 @@
-const {mainWindow} = require('./main');
+const {mainWindow } = require('./main');
 const {app}  = require('electron');
 // const {sequelize} = require('./database/sqlite3');
 // const {teste} = require('./controller/controller.chamado');

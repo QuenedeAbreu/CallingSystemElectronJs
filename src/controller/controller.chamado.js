@@ -11,11 +11,7 @@ const Chamados = require('../model/chamado');
   }
 }
 
-const teste =()=>{
-  console.log('hellow word');
-}
 
 module.exports = {
-  getChamadoAll,
-  teste
+  getChamadoAll
 }
