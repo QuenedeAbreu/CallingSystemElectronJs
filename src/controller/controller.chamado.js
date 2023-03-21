@@ -4,10 +4,11 @@ const Chamados = require('../model/chamado');
 // Get all Chamados
  const getChamadoAll = async () => {
   try {
-    const result = await Chamados.findAll();
-     console.log(result[0]);
+    const results = await Chamados.findAll();
+    return results
   } catch (error) {
     console.log(error);
+    return {}
   }
 }
 

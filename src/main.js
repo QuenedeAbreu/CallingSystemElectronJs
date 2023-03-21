@@ -1,5 +1,4 @@
 const {  BrowserWindow, ipcMain  } = require('electron')
-const { app } = require('@electron/remote/main');
 const controllerChamado  = require('./controller/controller.chamado');
 require('@electron/remote/main').initialize();
 
@@ -48,7 +47,6 @@ const createChildWindowRegister = () => {
 ipcMain.on("openChildWindowRegister", (event, arg) => {
   createChildWindowRegister();
 });
-
 
 //Fecha a janela que chamar a função
 ipcMain.on('closeChildWindowRegister', function (event) {
