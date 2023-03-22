@@ -377,6 +377,33 @@ th.gridjs-th:last-child {
   .gridjs-resizable:hover {
     cursor: ew-resize;
     background-color: #9bc2f7; }
+.icon-status-open{
+  color: #32CD32;
+  -webkit-text-stroke: 1px;
+  text-stroke:1px;
+  border: 1px solid #32CD32;
+  border-radius: 50%;
+  padding: 1px 5px 1px 4px;
+  cursor: pointer;
+}
+.icon-status-close{
+  color: #B22222;
+  -webkit-text-stroke: 1px;
+  text-stroke:1px;
+  border: 1px solid #B22222;
+  border-radius: 50%;
+  padding: 1px 5px 1px 4px;
+  cursor: not-allowed;
+}
+.icon-status-wait{
+  color: #FF8C00;
+  -webkit-text-stroke: 1px;
+  text-stroke:1px;
+  border: 1px solid #FF8C00;
+  border-radius: 50%;
+  padding: 1px 4px 2px 5px;
+  cursor: wait;
+}
 
 @media (prefers-color-scheme: dark) {
   .gridjs-head button, .gridjs-footer button {
