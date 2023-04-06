@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap');
+/* Loading  */
+  .loading-all{
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  }
+  .c-loader {
+    animation: is-rotating 1s infinite;
+    border: 10px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: rgba(117, 50, 250, 1);
+    height: 100px;
+    width: 100px;
+  }
+  
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+/* Loading end */
+.img-call{
+  width:100px;
+  heinght:100px;
+  position:absolute;
+  z-index:1;
+  top:0;
+  left:0;
+  margin:-50px 0 0 -50px ;
+  border:solid 10px #1E1E1E;
+  border-radius:50%;
+}
+.custom-w{
+  width:50%;
+}
+.title-form{
+  color:rgba(117, 50, 250, 1);
+  font-family: 'Fira Code';
+  font-size: 22px;
+}
+.bg-personalizado-semi{
+  background-color:#292929 !important;
+}
+.bg-personalizado{
+  background-color:#1E1E1E;
+}
+.bg-input{
+  background-color:rgb(0,0,0) !important;
+  border:none !important;
+}
+.box-shadow-personalizado{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.form-control:focus {
+        border-color: none !important;
+        box-shadow: none !important;
+    } 
+.bt-submit-personalizado{
+  background-color:rgba(117, 50, 250, 1) !important;
+  color: #FFF !important;
+  font-weight:bold !important; 
+}
+
+.bt-submit-personalizado:hover{
+  background-color:rgba(117, 50, 250, 0.7) !important;
+  
+}
+ .width-49{
+  width: 49% !important;
+ }
+ 
+ input[type="date"]::-webkit-calendar-picker-indicator{
+  color:white !important;
+  filter: invert(1) ;
+}
+
+ @media (max-width: 860px){
+   .width-49{
+  width: 100% !important;
+ }
+ }
+
+ @media (max-width: 525px){
+  .img-call{
+    margin:-75px 0 0 30% ;
+  }
+  .custom-w{
+    width:80% !important;
+  }
+
+ }

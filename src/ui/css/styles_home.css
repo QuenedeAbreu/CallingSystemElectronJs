@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap');
 body{
   background-color:#202124;
 }
@@ -52,40 +53,156 @@ body{
 .icons-header-a:hover {
  color: #A9A9A9 !important;
 }
-
-/* body {
-  background-color: #6F00FF;
-  color: #FFFFFF;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
+/*Css do modal de cadastro*/
+/* Loading  */
+.loading-all{
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 9999999;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  }
+  .c-loader {
+    animation: is-rotating 1s infinite;
+    border: 10px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: rgba(117, 50, 250, 1);
+    height: 100px;
+    width: 100px;
+  }
+  
+.loading-all-on{
+  display:flex !important;
 }
 
-table {
-  border-collapse: collapse;
-  margin: 50px auto;
-  width: 80%;
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+/* Loading end */
+.img-call{
+  width:100px;
+  heinght:100px;
+  position:absolute;
+  z-index:1;
+  top:0;
+  left:0;
+  margin:-50px 0 0 -50px ;
+  border:solid 10px #1E1E1E;
+  border-radius:50%;
 }
 
-th, td {
-  border: 1px solid #FFFFFF;
-  padding: 10px;
-  text-align: left;
+.title-toast{
+  color:rgba(117, 50, 250, 1);
+  font-family: 'Fira Code';
+  font-size: 18px;
+}
+.btn_close-toast{
+  background: transparent;
+  color:rgba(117, 50, 250, 1) !important;
 }
 
-th {
-  background-color: #6600CC;
+.icon-toast{
+  font-size:18px;
+  color:#00FF7F;
+  margin-right:10px;
 }
 
-tr:nth-child(even) {
-  background-color: #9933FF;
+.title-form{
+  color:rgba(117, 50, 250, 1);
+  font-family: 'Fira Code';
+  font-size: 22px;
+}
+.bg-personalizado-semi{
+  background-color:#292929 !important;
+}
+.bg-personalizado{
+  background-color:#1E1E1E;
+}
+.bg-input{
+  background-color:rgb(0,0,0) !important;
+  border:none !important;
+}
+.box-shadow-personalizado{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-tr:nth-child(odd) {
-  background-color: #CC66FF;
-} */
+.form-control:focus {
+        border-color: none !important;
+        box-shadow: none !important;
+    } 
+.bt-submit-personalizado{
+  background-color:rgba(117, 50, 250, 1) !important;
+  color: #FFF !important;
+  font-weight:bold !important; 
+}
 
+.bt-submit-personalizado:hover{
+  background-color:rgba(117, 50, 250, 0.7) !important;
+  
+}
+ .width-49{
+  width: 49% !important;
+  max-width: 49% !important;
+ }
+ 
+ input[type="date"]::-webkit-calendar-picker-indicator{
+  color:white !important;
+  filter: invert(1) ;
+}
+
+ @media (max-width: 860px){
+   .width-49{
+    width: 49% !important;
+    max-width: 49% !important;
+    }
+ }
+
+ @media (max-width: 525px){
+  .img-call{
+    margin:-75px 0 0 30% ;
+  }
+  .width-49{
+    width: 100% !important;
+    max-width: 100% !important;
+    /* margin: 0 0 0.5rem 0 !important; */
+  }
+
+ }
+ .btn-close-personalizado{
+  margin-top: -10px !important;
+  margin-right: -10px !important;
+  font-size:20px;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  border-radius:50% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  line-height:0 !important;
+  font-family: "Helvetica Neue" !important;
+  color: #6959CD !important;
+  transition: all 0.5s;
+ }
+
+.btn-close-personalizado:hover{
+  color: #00BFFF !important;
+  cursor: pointer !important;
+}
+
+ .outline-none:focus{
+  outline-style: none !important;
+}
+
+
+/*Css personalizado da tabela*/
 .gridjs-head button, .gridjs-footer button {
   cursor: pointer;
   background-color: transparent;
@@ -152,7 +269,7 @@ input.gridjs-input {
     border-color: #9bc2f7; }
 
 .gridjs-pagination {
-  color: #3d4044; }
+  color: #948d7f; }
   .gridjs-pagination::after {
     content: '';
     display: block;
@@ -405,6 +522,15 @@ th.gridjs-th:last-child {
   cursor: wait;
 }
 
+.button-action-edit{
+  background: transparent;
+  color: #836FFF;
+  transition: all 0.5s ease-in-out;
+}
+.button-action-edit:hover{
+  color: 	#0000CD;
+}
+
 @media (prefers-color-scheme: dark) {
   .gridjs-head button, .gridjs-footer button {
     cursor: pointer;
@@ -486,6 +612,7 @@ th.gridjs-th:last-child {
         padding: 5px 14px;
         border: 1px solid #2d2923;
         background-color: #000;
+        color:#948d7f;
         border-right: none;
         outline: none;
         -webkit-user-select: none;
@@ -496,7 +623,7 @@ th.gridjs-th:last-child {
         box-shadow: 0 0 0 2px rgba(106,66,12, 0.5); }
       .gridjs-pagination .gridjs-pages button:hover {
         background-color: #080808;
-        color: #c3bda8;
+        color: #948d7f;
         outline: none; }
       .gridjs-pagination .gridjs-pages button:disabled,
       .gridjs-pagination .gridjs-pages button[disabled],
@@ -507,9 +634,10 @@ th.gridjs-th:last-child {
       .gridjs-pagination .gridjs-pages button.gridjs-spread {
         cursor: default;
         box-shadow: none;
-        background-color: #000; }
+        background-color: #948d7f; }
       .gridjs-pagination .gridjs-pages button.gridjs-currentPage {
-        background-color: #080808;
+        background-color: #6a22b2;
+        color: #FFFFFF; 
         font-weight: bold; }
       .gridjs-pagination .gridjs-pages button:last-child {
         border-bottom-right-radius: 6px;

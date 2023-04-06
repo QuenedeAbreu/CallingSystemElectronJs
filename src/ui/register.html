@@ -1,29 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt_BR">
 
 <head>
-  <title>Settings</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Chamado</title>
+  <link rel="stylesheet" href="./css/style_cadastro.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
-  <div>
-    <h1 style="color: green;">
-      Hello : This is Settings window
-    </h1>
-    <button onclick="goToFirstWindow()">
-      Go to Main Window
-    </button>
+  <!--Loading -->
+  <div class="loading-all">
+    <div class="c-loader"></div>
   </div>
 
-  <script type="text/javascript">
-    const ipc = window.require('electron').ipcRenderer;
-    function goToFirstWindow() {
-      //code for some other action to be performed
+  <!--End Loading-->
+  <div class="vw-100 vh-100 bg-personalizado-semi d-flex align-items-center justify-content-center ">
 
-      //Code to close the window after doing other actions
-      ipc.send('closeChildWindowRegister');
-    }
-  </script>
+    <div
+      class=" custom-w min-h-50 p-4 bg-personalizado d-flex align-items-center flex-column box-shadow-personalizado rounded position-relative">
+      <img src="./img/call.png" class="img-call" />
+      <div class="title-form">
+        <h1>Novo Chamado</h1>
+      </div>
+      <form class="row g-3" id="form_new-call">
+        <!--Label e Input de titulo -->
+        <div class="  input-group bg-input  rounded group-border col-md-6">
+          <span class="input-group-text bg-transparent border-0" id="basic-addon1">
+            <i class="bi bi-newspaper text-light icon"></i></span>
+          <input type="text" class="form-control bg-transparent border-0 text-light input-focus" placeholder="Titulo"
+            aria-label="Titulo" aria-describedby="basic-addon1">
+        </div>
+        <!--Label e Input de Data -->
+        <div class=" me-2 width-49 input-group  bg-input  rounded group-border col-md-6 ">
+          <span class="input-group-text bg-transparent border-0 " id="basic-addon1">
+            <i class="bi bi-calendar3 text-light icon"></i></span>
+          <input type="date" class="form-control bg-transparent border-0 text-light input-focus " placeholder="Data"
+            aria-label="Data" aria-describedby="basic-addon1">
+        </div>
+        <!--Label e Input de Atendente -->
+        <div class=" width-49 input-group bg-input  rounded group-border col-md-6">
+          <span class="input-group-text bg-transparent border-0" id="basic-addon1">
+            <i class="bi bi-people-fill text-light icon"></i></span>
+          <input type="text" class="form-control bg-transparent border-0 text-light input-focus" placeholder="Atendente"
+            aria-label="atendente" aria-describedby="basic-addon1">
+        </div>
+        <!--Label e Input de A pedido -->
+        <div class=" me-2 width-49 input-group bg-input rounded group-border col-md-6">
+          <span class="input-group-text bg-transparent border-0" id="basic-addon1">
+            <i class="bi bi-person-circle text-light icon"></i></span>
+          <input type="text" class="form-control bg-transparent border-0 text-light input-focus" placeholder="A pedido"
+            aria-label="apedido" aria-describedby="basic-addon1">
+        </div>
+        <!--Label e Input de Status -->
+        <div class=" width-49 input-group bg-input  rounded group-border col-md-6">
+          <span class="input-group-text bg-transparent border-0" id="basic-addon1">
+            <i class="bi bi-hand-index text-light icon"></i></span>
+          <select
+            class="box-shadow-personalizado form-select bg-transparent text-light border-0 shadow-none input-focus"
+            aria-label="Status">
+            <option class="bg-input" selected value="0" disabled>Status</option>
+            <option class="bg-input" value="0">Aberto <i class="bi bi-hand-index text-light"></i></option>
+            <option class="bg-input" value="1">Concluido</option>
+            <option class="bg-input" value="2">Em espera</option>
+          </select>
+        </div>
+
+        <!--Label e Input de conteudo -->
+        <div class=" bg-input rounded group-border ">
+          <textarea aria-label="conteudo" class="form-control bg-input mt-0 input-focus text-light"
+            id="FormControlTextarea" rows="3" placeholder="Conteúdo do chamado"></textarea>
+        </div>
+
+        <!-- Botão do submit -->
+        <button type="submit" class="btn bt-submit-personalizado">
+          <i class="bi bi-person-plus me-2"></i> Cadastrar
+        </button>
+      </form>
+    </div>
+
+  </div>
+  <script src="./js/Js_Cadastro.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

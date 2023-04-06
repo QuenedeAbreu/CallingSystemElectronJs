@@ -1,12 +1,12 @@
-const {  BrowserWindow, ipcMain  } = require('electron')
-const controllerChamado  = require('./controller/controller.chamado');
+const { BrowserWindow, ipcMain } = require('electron')
+const controllerChamado = require('./controller/controller.chamado');
 require('@electron/remote/main').initialize();
 
 const mainWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences:{
+    webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true
@@ -24,7 +24,7 @@ const createChildWindowRegister = () => {
     modal: true,
     show: false,
     parent: mainWindow, // Make sure to add parent window here
-  
+
     // Make sure to add webPreferences with below configuration
     webPreferences: {
       nodeIntegration: true,
@@ -32,21 +32,22 @@ const createChildWindowRegister = () => {
       enableRemoteModule: true,
     },
   });
-  
+
   // ativa o remote 
   require('@electron/remote/main').enable(childWindow.webContents)
   // Carrega a pagina de regitro
   childWindow.loadFile("src/ui/register.html");
-  
+
   childWindow.on("ready-to-show", () => {
     childWindow.show();
   });
 }
 
+
 // Function para a chamar a janela de registro
-ipcMain.on("openChildWindowRegister", (event, arg) => {
-  createChildWindowRegister();
-});
+// ipcMain.on("openChildWindowRegister", (event, arg) => {
+//   createChildWindowRegister();
+// });
 
 //Fecha a janela que chamar a função
 ipcMain.on('closeChildWindowRegister', function (event) {
