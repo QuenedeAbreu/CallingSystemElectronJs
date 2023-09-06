@@ -1,7 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap');
+html ::-webkit-scrollbar {
+  width: 10px;
+  height:10px;
+}
+html ::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: #E2E3E5;
+}
+html ::-webkit-scrollbar-track {
+  background: #000;
+}
+
+
 body{
   background-color:#202124;
 }
+.icon-ninja{
+  width:50px;
+  height:50px;
+}
+
+.tabcontent{
+  display:none;
+  animation: fadeEffect 1s; 
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 
 .form-control-dark {
   border-color: var(--bs-gray);
@@ -529,6 +557,14 @@ th.gridjs-th:last-child {
 }
 .button-action-edit:hover{
   color: 	#0000CD;
+}
+.button-action-delete{
+  background: transparent;
+  color: #8C0000;
+  transition: all 0.5s ease-in-out;
+}
+.button-action-delete:hover{
+  color: 	#FF0101;
 }
 
 @media (prefers-color-scheme: dark) {

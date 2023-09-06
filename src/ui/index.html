@@ -13,7 +13,7 @@
   <meta name="revisit-after" content="5 days">
   <meta name="author" content="Quenede Abreu">
 
-  <title>Headers · Bootstrap v5.3</title>
+  <title>Organizer</title>
   <link href="./css/Bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="./css/Gridjs/mermaid.min.css" rel="stylesheet" />
 
@@ -64,6 +64,27 @@
   </div>
   </div>
 
+<!-- Modal Confirm Excluir -->
+<div class="modal fade" id="excluirConfirmModal" tabindex="-1" role="dialog" aria-labelledby="excluirConfirmModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-personalizado d-flex align-items-center flex-column">
+      <div class="title-form pt-3">
+        <h1 class="title_modal_excluir" id="exampleModalLabel">Excluir - </h1>
+        <button type="button" class="btn-close btn-close-personalizado bg-transparent border-0" data-bs-dismiss="modal" aria-label="Close"><i
+          class="bi bi-x-circle"></i></button>
+      </div>
+      <div class="modal-body text-light text_body_modal_excluir">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Fechar</button>
+        <button type="button" class="btn btn-danger submit_modal_excluir"><i class="bi bi-trash me-2"></i>Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- Modal -->
   <div class="modal fade" id="modalCadastrarEditar" tabindex="-1" aria-labelledby="modalCadastrarEditarLabel"
     aria-hidden="true">
@@ -78,7 +99,7 @@
               class="bi bi-x-circle"></i></button>
 
           <div class="title-form">
-            <h1>Novo Chamado</h1>
+            <h1 class="title_modal">Novo Chamado</h1>
           </div>
           <form class="row g-3" id="form_new-call">
             <!--Label e Input de titulo -->
@@ -116,10 +137,10 @@
               <select
                 class="outline-none w-75 box-shadow-personalizado form-select bg-transparent text-light border-0 shadow-none input-focus input-focus-red"
                 aria-label="Status">
-                <option class="bg-input" selected value="0" disabled>Status</option>
+                <option class="bg-input" selected value="3" disabled>Status</option>
                 <option class="bg-input" value="0">Aberto <i class="bi bi-hand-index text-light"></i></option>
-                <option class="bg-input" value="1">Concluido</option>
-                <option class="bg-input" value="2">Em espera</option>
+                <option class="bg-input" value="1">Em espera</option>
+                <option class="bg-input" value="2">Concluido</option>
               </select>
             </div>
 
@@ -130,7 +151,7 @@
             </div>
 
             <!-- Botão do submit -->
-            <button type="submit" class="btn bt-submit-personalizado mt-2 w-100">
+            <button type="submit" class="btn bt-submit-personalizado mt-2 w-100 submit_modal" data-user="0">
               <i class="bi bi-person-plus me-2"></i> Cadastrar
             </button>
           </form>
@@ -140,45 +161,30 @@
     </div>
   </div>
 
-  <main>
+  <main >
     <header class="shadow shadow-success shadow-intensity-lg">
       <div class="bg-purple">
         <div class="container ">
 
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
             <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none ">
-              <i class="bi bi-bootstrap me-2" style="width: 30px; height: 30px;"></i>
+              <!-- <i class="bi bi-bootstrap me-2" style="width: 30px; height: 30px;"></i> -->
+              <img src="./img/icon-ninja.svg" class="icon-ninja" />
             </a>
 
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small font-weight-bold">
-              <li class="position-relative">
-                <a href="#" class="nav-link text-white icons-header-a li-icons-a ">
-                  <i class="bi bi-house-door d-block mx-auto icons-header"></i>
-                  Home
+              <li class="position-relative tablinks" onclick="pageTab(event, 'called')" id="defaultOpen">
+                <a href="#" class=" nav-link text-white icons-header-a li-icons-a ">
+                  <!-- <i class="bi bi-house-door d-block mx-auto icons-header"></i> -->
+                  <i class="bi bi-headset d-block mx-auto icons-header"></i>
+                  Chamados
                 </a>
               </li>
-              <li class="position-relative">
-                <a href="#" class="nav-link text-white icons-header-a li-icons-a">
-                  <i class="bi bi-speedometer2 d-block mx-auto icons-header"></i>
-                  Dashboard
-                </a>
-              </li>
-              <li class="position-relative">
-                <a href="#" class="nav-link text-white icons-header-a li-icons-a">
-                  <i class="bi bi-table d-block mx-auto icons-header"></i>
-                  Orders
-                </a>
-              </li>
-              <li class="position-relative">
-                <a href="#" class="nav-link text-white icons-header-a li-icons-a">
-                  <i class="bi bi-grid d-block mx-auto icons-header"></i>
-                  Products
-                </a>
-              </li>
-              <li class="position-relative">
-                <a href="#" class="nav-link text-white icons-header-a li-icons-a">
-                  <i class="bi bi-person-circle d-block mx-auto icons-header"></i>
-                  Customers
+              <li class="position-relative tablinks" onclick="pageTab(event, 'anotations')">
+                <a href="#" class=" nav-link text-white icons-header-a li-icons-a">
+                  <!--<i class="bi bi-speedometer2 d-block mx-auto icons-header"></i>-->
+                  <i class="bi bi-journal-text d-block mx-auto icons-header"></i>
+                  Anotações
                 </a>
               </li>
             </ul>
@@ -188,14 +194,24 @@
 
     </header>
 
+     <!--    Calls  tabPage-->
+  <div id="called" class="tabcontent ">
     <div
       class="container d-flex flex-wrap align-items-center justify-content-center mt-3 border-bottom border-white text-white">
-      <img class="m-2" src="./img/icon.png" style="width: 150px;" />
-      <h1 class="fw-bold text-white">Chamados</h1>
+      <img class="m-2" src="./img/icon.png" style="width: 60px;" />
+      <h3 class="fw-bold text-white">Chamados</h3>
     </div>
-    <div class="container pt-1">
+    <div class="container pt-1 mh-25">
       <div id="table-wrapper"></div>
     </div>
+  </div>
+  
+    <!--    Anotations  tabPage-->
+    <div id="anotations" class="tabcontent">
+      <h1 class='text-light'>Teste</div>
+    </div>
+
+
   </main>
   <script src="./js/Js_Home.js"></script>
 

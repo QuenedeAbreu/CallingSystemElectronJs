@@ -6,7 +6,8 @@ const getChamadoAll = async () => {
   try {
     const results = await Chamados.findAll({
       order: [
-        ['status', 'DESC']
+        ['status', 'ASC'],
+        ['id_chamado', 'DESC']
       ]
     });
     return results
@@ -35,11 +36,22 @@ const includeChamado = async (chamado) => {
     console.log(error);
     return {}
   }
+}
+
+const editarChamado = async (id, chamado) => {
+  try {
+    const results = await Chamados.update(chamado, { where: { id_chamado: id } });
+    return results;
+  } catch (error) {
+    console.log(error);
+    return {}
+  }
 
 }
 
 module.exports = {
   getChamadoAll,
   includeChamado,
-  getChamadoOne
+  getChamadoOne,
+  editarChamado
 }
