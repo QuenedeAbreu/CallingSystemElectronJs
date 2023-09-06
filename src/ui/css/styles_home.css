@@ -15,6 +15,28 @@ html ::-webkit-scrollbar-track {
 body{
   background-color:#202124;
 }
+/* Page anotatiosn */
+  .body-anotations{
+    width:100%;
+    height: 77vh !important;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+  }
+  .all_anotations{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .img_anotations{
+    width:50%;
+    height:50%;
+    opacity:0.2;
+  }
+/* End anotatiosn */
 .icon-ninja{
   width:50px;
   height:50px;
@@ -137,9 +159,14 @@ body{
   color:rgba(117, 50, 250, 1) !important;
 }
 
-.icon-toast{
+.icon-toast-sucess{
   font-size:18px;
   color:#00FF7F;
+  margin-right:10px;
+}
+.icon-toast-erro{
+  font-size:18px;
+  color:#FF0101;
   margin-right:10px;
 }
 

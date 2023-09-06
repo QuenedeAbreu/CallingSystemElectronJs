@@ -49,9 +49,22 @@ const editarChamado = async (id, chamado) => {
 
 }
 
+const deleteChamado = async (id) => {
+  try {
+    const results = await Chamados.destroy({ where: { id_chamado: id } });
+    return results;
+  }
+  catch (error) {
+    console.log(error);
+    return {}
+  }
+
+}
+
 module.exports = {
   getChamadoAll,
   includeChamado,
   getChamadoOne,
-  editarChamado
+  editarChamado,
+  deleteChamado
 }

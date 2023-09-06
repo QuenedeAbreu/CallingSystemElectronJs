@@ -43,8 +43,9 @@
   <div class=" toast-container position-fixed bottom-0 end-0 p-3">
     <div class="toast text-success " id="liveToast">
       <div class="toast-header bg-dark ">
-        <i class="bi bi-check-circle icon-toast"></i>
-
+        <div class="icon_toast_box">
+        <i class="bi bi-check-circle icon-toast-sucess"></i>
+        </div>
         <!--<img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png"
           class="img-thumbnail rounded me-2" width="40px" alt="GFG Logo">-->
         <strong class="me-auto title-toast">
@@ -70,7 +71,7 @@
     <div class="modal-content bg-personalizado d-flex align-items-center flex-column">
       <div class="title-form pt-3">
         <h1 class="title_modal_excluir" id="exampleModalLabel">Excluir - </h1>
-        <button type="button" class="btn-close btn-close-personalizado bg-transparent border-0" data-bs-dismiss="modal" aria-label="Close"><i
+        <button type="button" id="closeModalConfirmExcluir" class="btn-close btn-close-personalizado bg-transparent border-0" data-bs-dismiss="modal" aria-label="Close"><i
           class="bi bi-x-circle"></i></button>
       </div>
       <div class="modal-body text-light text_body_modal_excluir">
@@ -78,7 +79,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Fechar</button>
-        <button type="button" class="btn btn-danger submit_modal_excluir"><i class="bi bi-trash me-2"></i>Excluir</button>
+        <button type="button" class="btn btn-danger submit_modal_excluir" onclick="deleteChamado()"><i class="bi bi-trash me-2"></i>Excluir</button>
       </div>
     </div>
   </div>
@@ -86,7 +87,7 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="modalCadastrarEditar" tabindex="-1" aria-labelledby="modalCadastrarEditarLabel"
+<div class="modal fade" id="modalCadastrarEditar" tabindex="-1" aria-labelledby="modalCadastrarEditarLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-transparent ">
@@ -161,7 +162,7 @@
     </div>
   </div>
 
-  <main >
+<main >
     <header class="shadow shadow-success shadow-intensity-lg">
       <div class="bg-purple">
         <div class="container ">
@@ -207,8 +208,10 @@
   </div>
   
     <!--    Anotations  tabPage-->
-    <div id="anotations" class="tabcontent">
-      <h1 class='text-light'>Teste</div>
+    <div id="anotations" class="tabcontent container body-anotations">
+      <div class="all_anotations"> 
+        <img src="./img/bg_anotations.svg" class="img_anotations"/>
+      </div>
     </div>
 
 

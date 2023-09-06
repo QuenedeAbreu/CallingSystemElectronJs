@@ -3,15 +3,25 @@ const main = require('@electron/remote').require('./main');
 const controllerChamado = main.controllerChamado;
 const ipc = window.require('electron').ipcRenderer;
 // const modal = bootstrap.Modal.getOrCreateInstance('#modalCadastrarEditar')
-const meuBotao = document.getElementById("bottaoCloseModalCadastrar");
+const btnFecharModalCadastro = document.getElementById("bottaoCloseModalCadastrar");
+const btnFecharModalConfirmExcluir = document.getElementById('closeModalConfirmExcluir');
 
 
-const showToast = () => {
+const showToast = (type, Title, content) => {
   const titleToast = document.querySelector('.title-toast');
   const bodyToast = document.querySelector('.body-toast');
+  const iconToast = document.querySelector('.icon_toast_box');
   const toast = new bootstrap.Toast("#liveToast").show()
-  titleToast.innerHTML = `Sucesso!`
-  bodyToast.innerHTML = `Chamado cadastrado com sucesso!`
+  if (type == 'success') {
+    titleToast.innerHTML = `${Title}`
+    bodyToast.innerHTML = `${content}`
+    iconToast.innerHTML = `<i class="bi bi-check-circle-fill icon-toast-sucess"></i>`
+  } else {
+    titleToast.innerHTML = `${Title}`
+    bodyToast.innerHTML = `${content}`
+    iconToast.innerHTML = `<i class="bi bi-bug icon-toast-erro"></i>`
+  }
+
 
 }
 
@@ -21,8 +31,12 @@ const toggleLoading = () => {
   screenLoading.classList.toggle("loading-all-on");
 }
 //close  Modal
-const closeModal = () => {
-  meuBotao.click()
+const closeModalCadastro = () => {
+  btnFecharModalCadastro.click()
+}
+
+const closeModalConfirmExcluir = () => {
+  btnFecharModalConfirmExcluir.click()
 }
 
 
@@ -163,11 +177,11 @@ const ValuesModalExcluir = async (id) => {
   const submit_modal_excluir = document.querySelector('.submit_modal_excluir');
   const text_body_modal_excluir = document.querySelector('.text_body_modal_excluir');
   const resultChamado = JSON.parse(JSON.stringify(await getChamadoOne(id)));
+
   title_modal_excluir.innerHTML = 'Excluir Chamado';
-  text_body_modal_excluir.innerHTML = `Deseja realmente excluir o chamado: ${resultChamado.id_chamado} - ${resultChamado.titulo_chamado}?`
+  text_body_modal_excluir.innerHTML = `Deseja realmente excluir o chamado: <u>${resultChamado.id_chamado} - ${resultChamado.titulo_chamado}</u> ?`
 
   submit_modal_excluir.setAttribute('data-user', id)
-
 }
 
 
@@ -214,10 +228,11 @@ const cadastrarChamado = async (items) => {
     toggleLoading();
     const teste = await controllerChamado.includeChamado(montObject)
     toggleLoading();
-    showToast();
-    closeModal();
-
+    showToast('success', 'Sucesso!', 'Chamado cadastrado com sucesso!');
+    closeModalCadastro();
+    setTimeout(() => { window.location.reload() }, 1500);
   } catch (error) {
+    showToast('error', 'Erro!', 'Erro ao cadastrar o chamado!');
     console.log(error);
   }
 }
@@ -255,10 +270,30 @@ const editarChamado = async (id, chamado) => {
     toggleLoading();
     const teste = await controllerChamado.editarChamado(id, montObject)
     toggleLoading();
-    showToast();
-    closeModal();
+    showToast('success', 'Sucesso!', 'Chamado editado com sucesso!');
+    closeModalCadastro();
 
   } catch (error) {
+    showToast('error', 'Erro!', 'Erro ao editar o chamado!');
+    console.log(error);
+  }
+}
+
+
+const deleteChamado = async () => {
+  const submit_modal_excluir = document.querySelector('.submit_modal_excluir');
+  const id = submit_modal_excluir.getAttribute('data-user');
+  try {
+    toggleLoading();
+    const teste = await controllerChamado.deleteChamado(id)
+    toggleLoading();
+    showToast('success', 'Sucesso!', 'Chamado deletado com sucesso!');
+    closeModalConfirmExcluir();
+    setTimeout(() => { window.location.reload() }, 1500);
+    // window.location.reload();
+
+  } catch (error) {
+    showToast('erro', 'Erro!', 'Erro ao deletar o chamado!');
     console.log(error);
   }
 }
@@ -306,11 +341,12 @@ document.getElementById('form_new-call').addEventListener('submit', async (e) =>
   if (inputs_red.length == count) {
     if (submit_modal.getAttribute('data-user') == 0) {
       cadastrarChamado(inputs)
+      setTimeout(() => { window.location.reload() }, 1500);
       // renderTable();
     } else {
       editarChamado(submit_modal.getAttribute('data-user'), inputs)
       // renderTable();
-      window.location.reload();
+      setTimeout(() => { window.location.reload() }, 1500);
     }
   }
 })
