@@ -88,23 +88,44 @@ const renderTable = async () => {
   toggleLoading()
   const resultChamadoAll = await getChamadoAll();
   let chamados = [];
-  resultChamadoAll.map(async (chamado) => {
-    chamados.push([chamado.id_chamado,
-    chamado.titulo_chamado,
-    limitaStr(chamado.texto_chamado, 10),
-    new Date(chamado.data_chamado).toLocaleDateString('pt-BR', { timeZone: 'UTC' }),
-    chamado.atendente_chamado,
-    chamado.pedido_chamado,
-    statusCirclesColort(chamado.status),
-    gridjs.html(`<button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalCadastrarEditar" class="button-action-edit" onClick="ValuesModalEdit(${chamado.id_chamado})">
-    <i class="bi bi-pen"></i></button>
 
-    <button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#excluirConfirmModal" class="button-action-delete" onClick="ValuesModalExcluir(${chamado.id_chamado})">
-    <i class="bi bi-trash"></i>    </button>
-    
-    `)
+
+  for (var i = 0; resultChamadoAll.length > i; i++) {
+    // console.log(resultChamadoAll[i]);
+    chamados.push([resultChamadoAll[i].id_chamado,
+    resultChamadoAll[i].titulo_chamado,
+    limitaStr(resultChamadoAll[i].texto_chamado, 10),
+    new Date(resultChamadoAll[i].data_chamado).toLocaleDateString('pt-BR', { timeZone: 'UTC' }),
+    resultChamadoAll[i].atendente_chamado,
+    resultChamadoAll[i].pedido_chamado,
+    statusCirclesColort(resultChamadoAll[i].status),
+    gridjs.html(`<button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalCadastrarEditar" class="button-action-edit" onClick="ValuesModalEdit(${resultChamadoAll[i].id_chamado})">
+      <i class="bi bi-pen"></i></button>
+  
+      <button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#excluirConfirmModal" class="button-action-delete" onClick="ValuesModalExcluir(${resultChamadoAll[i].id_chamado})">
+      <i class="bi bi-trash"></i>    </button>
+      
+      `)
     ])
-  })
+  }
+  // resultChamadoAll.forEach((chamado) => {
+  //   chamados.push([chamado.id_chamado,
+  //   chamado.titulo_chamado,
+  //   limitaStr(chamado.texto_chamado, 10),
+  //   new Date(chamado.data_chamado).toLocaleDateString('pt-BR', { timeZone: 'UTC' }),
+  //   chamado.atendente_chamado,
+  //   chamado.pedido_chamado,
+  //   statusCirclesColort(chamado.status),
+  //   gridjs.html(`<button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalCadastrarEditar" class="button-action-edit" onClick="ValuesModalEdit(${chamado.id_chamado})">
+  // <i class="bi bi-pen"></i></button>
+
+  // <button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#excluirConfirmModal" class="button-action-delete" onClick="ValuesModalExcluir(${chamado.id_chamado})">
+  // <i class="bi bi-trash"></i>    </button>
+
+  // `)
+  //   ])
+  // })
+
   const table = new gridjs.Grid({
     columns: ['Id', 'Titulo', 'Texto', 'Data', 'Atendente', 'A_pedido', 'Status', { name: 'Ações', width: '85px' }],
     data: chamados,
@@ -163,10 +184,11 @@ const renderTable = async () => {
   //Inclusão do Botão para abrir o registro
   const gridjs_head = document.querySelector('.gridjs-head');
   gridjs_head.innerHTML = `<button aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalCadastrarEditar" class="gridjs-head-button" onClick="InfoCadastrarModal()">
-                          <i class="bi bi-plus"></i>
-                          </button>`
+                            <i class="bi bi-plus"></i>
+                            </button>`
   toggleLoading()
 }
+
 //Abre a janela de registro
 // function openChildWindowRegister(){
 //     ipc.send('openChildWindowRegister');  

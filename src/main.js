@@ -1,8 +1,54 @@
-const { BrowserWindow, ipcMain } = require('electron')
+const { BrowserWindow, ipcMain, Menu } = require('electron')
 const controllerChamado = require('./controller/controller.chamado');
 require('@electron/remote/main').initialize();
 
 const mainWindow = () => {
+  let menuPrincipal = Menu.buildFromTemplate([
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    { type: 'separator' },
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' }
+
+      ]
+    },
+
+    { type: 'separator' },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Quenede Abreu',
+          click: async () => {
+            const { shell } = require('electron')
+            await shell.openExternal('https://wa.me/5568999655360?text=Queria%ajuda%com%o%Organizer!')
+          }
+        }
+      ]
+    }
+
+
+  ]);
+  Menu.setApplicationMenu(menuPrincipal);
   const win = new BrowserWindow({
     width: 800,
     height: 600,
