@@ -1,1 +1,1 @@
-npx electron-packager C:\Users\quenede.abreu\Pictures\teste\CrudElectronJs Organizer --platform=win32 --arch=x64 --icon=./src/ui/img/icon-ninja.ico
+npx electron-packager C:\Users\quenede.abreu\Pictures\teste\CallingSystemElectronJs Organizer --platform=win32 --arch=x64 --icon=./src/ui/img/icon-ninja.ico

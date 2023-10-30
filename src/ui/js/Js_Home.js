@@ -47,10 +47,13 @@ const statusCirclesColort = (status) => {
   } else if (status === 1) {
     return gridjs.html('<i class="bi bi-clock-history icon-status-wait" data-bs-toggle="tooltip" data-bs-placement="top" title="Chamada em espera de resposta!"></i>')
   } else {
-    return gridjs.html('<i class="bi bi-code-slash icon-status-close"data-bs-toggle="tooltip" data-bs-placement="top" title="Chamada concluido!"></i>')
+    return gridjs.html('<i class="bi bi-code-slash icon-status-close" data-bs-toggle="tooltip" data-bs-placement="top" title="Chamada concluido!"></i>')
   }
 }
 
+const dateTooltip = (text, date) => {
+  return gridjs.html(`<span class="tooltiptext" data-bs-toggle="tooltip" data-bs-placement="top" title="${text}">${date}</span>`)
+}
 //Limit caracteres
 function limitaStr(str, limite) {
   nova = ``;
@@ -91,11 +94,11 @@ const renderTable = async () => {
 
 
   for (var i = 0; resultChamadoAll.length > i; i++) {
-    // console.log(resultChamadoAll[i]);
+    //console.log(resultChamadoAll[i].tempo_abertura);
     chamados.push([resultChamadoAll[i].id_chamado,
     resultChamadoAll[i].titulo_chamado,
     limitaStr(resultChamadoAll[i].texto_chamado, 10),
-    new Date(resultChamadoAll[i].data_chamado).toLocaleDateString('pt-BR', { timeZone: 'UTC' }),
+    dateTooltip(resultChamadoAll[i].tempo_abertura, new Date(resultChamadoAll[i].data_chamado).toLocaleDateString('pt-BR', { timeZone: 'UTC' })),
     resultChamadoAll[i].atendente_chamado,
     resultChamadoAll[i].pedido_chamado,
     statusCirclesColort(resultChamadoAll[i].status),
